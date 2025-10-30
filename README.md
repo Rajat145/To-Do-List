@@ -1,0 +1,1 @@
+A simple and user-friendly To-Do List application that helps you organize daily tasks efficiently. You can add, edit, delete, and mark tasks as completed. The app provides a clean interface with responsive design and can be used for personal productivity or as a beginner web-development project.
