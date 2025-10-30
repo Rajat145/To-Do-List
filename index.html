@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster - To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">✓</div>
+                <div class="logo-text">
+                    <h1>TaskMaster</h1>
+                    <p>Organize your life, one task at a time</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-icon">📋</div>
+                <div class="stat-value" id="totalTasks">0</div>
+                <div class="stat-label">Total Tasks</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div class="stat-value" id="completedTasks">0</div>
+                <div class="stat-label">Completed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⏳</div>
+                <div class="stat-value" id="pendingTasks">0</div>
+                <div class="stat-label">Pending</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🔥</div>
+                <div class="stat-value" id="highPriority">0</div>
+                <div class="stat-label">High Priority</div>
+            </div>
+        </div>
+
+        <!-- Progress -->
+        <div class="progress-section">
+            <div class="progress-header">
+                <span class="progress-label">Overall Progress</span>
+                <span class="progress-percentage" id="progressPercentage">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <!-- Add Task -->
+        <div class="add-task-section">
+            <form class="add-task-form" id="addTaskForm">
+                <input type="text" class="task-input" id="taskInput" placeholder="What needs to be done?" required>
+                <button type="submit" class="add-btn">➕ Add Task</button>
+            </form>
+            <div class="task-options">
+                <div class="option-group">
+                    <label>Priority</label>
+                    <select id="taskPriority">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label>Category</label>
+                    <select id="taskCategory">
+                        <option value="personal">Personal</option>
+                        <option value="work">Work</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="health">Health</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label>Due Date</label>
+                    <input type="date" id="taskDueDate">
+                </div>
+            </div>
+        </div>
+
+        <!-- Search -->
+        <div class="search-box">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search tasks...">
+            <span class="search-icon">🔍</span>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All Tasks</button>
+            <button class="filter-btn" data-filter="active">Active</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+            <button class="filter-btn" data-filter="high">High Priority</button>
+            <button class="filter-btn" data-filter="medium">Medium Priority</button>
+            <button class="filter-btn" data-filter="low">Low Priority</button>
+        </div>
+
+        <!-- Tasks List -->
+        <div class="tasks-section">
+            <div class="section-header">
+                <h2 class="section-title">My Tasks</h2>
+                <button class="clear-all-btn" id="clearAllBtn">🗑️ Clear Completed</button>
+            </div>
+            <div class="tasks-list" id="tasksList">
+                <div class="empty-state">
+                    <div class="empty-icon">📝</div>
+                    <h3>No tasks yet!</h3>
+                    <p>Add a task to get started</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Task</h2>
+                <button class="close-btn" id="closeModalBtn">✕</button>
+            </div>
+            <form class="modal-form" id="editTaskForm">
+                <div class="form-group">
+                    <label>Task Name</label>
+                    <input type="text" id="editTaskInput" required>
+                </div>
+                <div class="form-group">
+                    <label>Priority</label>
+                    <select id="editTaskPriority">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="editTaskCategory">
+                        <option value="personal">Personal</option>
+                        <option value="work">Work</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="health">Health</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Due Date</label>
+                    <input type="date" id="editTaskDueDate">
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="modal-btn save-btn">💾 Save Changes</button>
+                    <button type="button" class="modal-btn cancel-btn" id="cancelEditBtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
